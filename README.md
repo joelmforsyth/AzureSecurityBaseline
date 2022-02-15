@@ -9,22 +9,22 @@ The referenced script contains several errors including wrong or no CCE Ids, wro
 
 ## How to Use
 ### For Windows Servers
-- Install required modules
+1. Install required modules
 ```powershell
 Install-Module -Name AuditPolicyDsc -Force
 Install-Module -Name SecurityPolicyDsc -Force
 Install-Module -Name NetworkingDsc -Force
 Install-Module -Name PSDesiredStateConfiguration -Force
 ```
-- Login to VM using RDP
-- Download/copy PowerShell script to VM
-- Run PowerShell script to compile DSC
+2. Login to VM using RDP
+3. Download/copy PowerShell script to VM
+4. Run PowerShell script to compile DSC
 ```powershell
 .\AzureSecurity_WindowsServer2019.ps1
 ```
-Script will generate MOF files in the directory.
+5. Script will generate MOF files in the directory.
 
-Run below command to apply baseline configuration
+6. Run below command to apply baseline configuration
 ```powershell
 Start-DscConfiguration -Path .\AzureSecurity_WindowsServer2019  -Force -Verbose -Wait
 ```
