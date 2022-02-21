@@ -173,13 +173,27 @@ Configuration AzureSecurity_WindowsServer2019 {
             AuditFlag = 'Failure'
             Ensure    = 'Present'
         }
+   
+        # CceId: CCE-37856-2
+        # DataSource: Audit Policy
+        # Ensure 'Audit User Account Management' is set to 'Success and Failure'
+        AuditPolicySubcategory 'Audit User Account Management (Success)' {
+            Name      = 'User Account Management'
+            AuditFlag = 'Success'
+            Ensure    = 'Present'
+        }
+        AuditPolicySubcategory 'Audit User Account Management (Failure)' {
+           Name      = 'User Account Management'
+           AuditFlag = 'Failure'
+           Ensure    = 'Present'
+        }
 
         # CceId: AZ-WIN-00130
         # DataSource: Registry Policy
         # Ensure 'Allow Cortana above lock screen' is set to 'Disabled'
         Registry 'AllowCortanaAboveLock' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Search'
             ValueName = 'AllowCortanaAboveLock'
             ValueType = 'DWord'
             ValueData = '0'
@@ -190,7 +204,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Allow Cortana' is set to 'Disabled'
         Registry 'AllowCortana' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Search'
             ValueName = 'AllowCortana'
             ValueType = 'DWord'
             ValueData = '0'
@@ -212,7 +226,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Allow Microsoft accounts to be optional' is set to 'Enabled'
         Registry 'MSAOptional' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System'
             ValueName = 'MSAOptional'
             ValueType = 'DWord'
             ValueData = '1'
@@ -223,7 +237,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Allow search and Cortana to use location' is set to 'Disabled'
         Registry 'AllowSearchToUseLocation' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Search'
             ValueName = 'AllowSearchToUseLocation'
             ValueType = 'DWord'
             ValueData = '0'
@@ -234,7 +248,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Allow Telemetry' is set to 'Enabled: 0 - Security [Enterprise Only]' or 'Enabled: 1 - Basic'
         Registry 'AllowTelemetry' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection'
             ValueName = 'AllowTelemetry'
             ValueType = 'DWord'
             ValueData = '1'
@@ -256,7 +270,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Do not allow passwords to be saved' is set to 'Enabled'
         Registry 'DisablePasswordSaving' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Terminal Services'
             ValueName = 'DisablePasswordSaving'
             ValueType = 'DWord'
             ValueData = '1'
@@ -267,7 +281,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Do not display network selection UI' is set to 'Enabled'
         Registry 'DontDisplayNetworkSelectionUI' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System'
             ValueName = 'DontDisplayNetworkSelectionUI'
             ValueType = 'DWord'
             ValueData = '1'
@@ -278,7 +292,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Do not show feedback notifications' is set to 'Enabled'
         Registry 'DoNotShowFeedbackNotifications' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection'
             ValueName = 'DoNotShowFeedbackNotifications'
             ValueType = 'DWord'
             ValueData = '1'
@@ -289,7 +303,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Enable insecure guest logons' is set to 'Disabled'
         Registry 'AllowInsecureGuestAuth' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LanmanWorkstation'
             ValueName = 'AllowInsecureGuestAuth'
             ValueType = 'DWord'
             ValueData = '0'
@@ -300,7 +314,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Enable RPC Endpoint Mapper Client Authentication' is set to 'Enabled' (MS only)
         Registry 'EnableAuthEpResolution' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Rpc'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Rpc'
             ValueName = 'EnableAuthEpResolution'
             ValueType = 'DWord'
             ValueData = '1'
@@ -322,7 +336,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Application: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
         Registry 'MaxSizeApplication' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Application'
             ValueName = 'MaxSize'
             ValueType = 'DWord'
             ValueData = '32768'
@@ -331,9 +345,9 @@ Configuration AzureSecurity_WindowsServer2019 {
         # CceId: AZ-WIN-00138
         # DataSource: Registry Policy
         # Ensure 'Block user from showing account details on sign-in' is set to 'Enabled'
-        Registry 'BlockUserFromSh owingAccountDetailsOnSignin' {
+        Registry 'BlockUserFromShowingAccountDetailsOnSignin' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System'
             ValueName = 'BlockUserFromShowingAccountDetailsOnSignin'
             ValueType = 'DWord'
             ValueData = '1'
@@ -355,7 +369,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Configure Solicited Remote Assistance' is set to 'Disabled'
         Registry 'fAllowToGetHelp' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Terminal Services'
             ValueName = 'fAllowToGetHelp'
             ValueType = 'DWord'
             ValueData = '0'
@@ -366,7 +380,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Configure Windows SmartScreen' is set to 'Enabled' 
         Registry 'EnableSmartScreen' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System'
             ValueName = 'EnableSmartScreen'
             ValueType = 'DWord'
             ValueData = '1'
@@ -377,24 +391,10 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Disallow Digest authentication' is set to 'Enabled'
         Registry 'AllowDigest' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Client'
             ValueName = 'AllowDigest'
             ValueType = 'DWord'
             ValueData = '0'
-        }
-
-        # CceId: CCE-37856-2
-        # DataSource: Audit Policy
-        # Ensure 'Audit User Account Management' is set to 'Success and Failure'
-        AuditPolicySubcategory 'Audit User Account Management (Success)' {
-            Name      = 'User Account Management'
-            AuditFlag = 'Success'
-            Ensure    = 'Present'
-        }
-        AuditPolicySubcategory 'Audit User Account Management (Failure)' {
-           Name      = 'User Account Management'
-           AuditFlag = 'Failure'
-           Ensure    = 'Present'
         }
         
         # CceId: AZ-WIN-00177
@@ -402,7 +402,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Enable 'Scan removable drives' by setting DisableRemovableDriveScanning (REG_DWORD) to 0
         Registry 'DisableRemovableDriveScanning' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Microsoft Antimalware\Scan'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Scan'
             ValueName = 'DisableRemovableDriveScanning'
             ValueType = 'DWord'
             ValueData = '0'
@@ -413,7 +413,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Disallow Autoplay for non-volume devices' is set to 'Enabled'
         Registry 'NoAutoplayfornonVolume' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer'
             ValueName = 'NoAutoplayfornonVolume'
             ValueType = 'DWord'
             ValueData = '1'
@@ -424,7 +424,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Enable 'Send file samples when further analysis is required' for 'Send Safe Samples'
         Registry 'SubmitSamplesConsent' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Microsoft Antimalware\SpyNet'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\SpyNet'
             ValueName = 'SubmitSamplesConsent'
             ValueType = 'DWord'
             ValueData = '1'
@@ -435,7 +435,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Always prompt for password upon connection' is set to 'Enabled'
         Registry 'fPromptForPassword' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Terminal Services'
             ValueName = 'fPromptForPassword'
             ValueType = 'DWord'
             ValueData = '1'
@@ -446,7 +446,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Require secure RPC communication' is set to 'Enabled'
         Registry 'fEncryptRPCTraffic' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Terminal Services'
             ValueName = 'fEncryptRPCTraffic'
             ValueType = 'DWord'
             ValueData = '1'
@@ -457,7 +457,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Setup: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
         Registry 'MaxSizeSetupLog' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Setup'
             ValueName = 'MaxSize'
             ValueType = 'DWord'
             ValueData = '32768'
@@ -468,7 +468,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Security: Specify the maximum log file size (KB)' is set to 'Enabled: 196,608 or greater'
         Registry 'MaxSizeSecurityLog' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Security'
             ValueName = 'MaxSize'
             ValueType = 'DWord'
             ValueData = '196700'
@@ -477,10 +477,10 @@ Configuration AzureSecurity_WindowsServer2019 {
         # CceId: AZ-WIN-00172
         # DataSource: Registry Policy
         # Ensure 'Prohibit use of Internet Connection Sharing on your DNS domain network' is set to 'Enabled'
-        Registry 'NC_PersonalFirewallConfig' {
+        Registry 'NC_ShowSharedAccessUI' {
             Ensure    = 'Present'
             Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Network Connections'
-            ValueName = 'NC_PersonalFirewallConfig'
+            ValueName = 'NC_ShowSharedAccessUI'
             ValueType = 'DWord'
             ValueData = '0'
         }
@@ -501,7 +501,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Prevent enabling lock screen slide show' is set to 'Enabled'
         Registry 'NoLockScreenSlideshow' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization'
             ValueName = 'NoLockScreenSlideshow'
             ValueType = 'DWord'
             ValueData = '1'
@@ -512,7 +512,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Prevent enabling lock screen camera' is set to 'Enabled' 
         Registry 'NoLockScreenCamera' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization'
             ValueName = 'NoLockScreenCamera'
             ValueType = 'DWord'
             ValueData = '1'
@@ -523,7 +523,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Prevent downloading of enclosures' is set to 'Enabled'
         Registry 'DisableEnclosureDownload' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Internet Explorer\Feeds'
             ValueName = 'DisableEnclosureDownload'
             ValueType = 'DWord'
             ValueData = '1'
@@ -567,7 +567,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Set the default behavior for AutoRun' is set to 'Enabled: Do not execute any autorun commands'
         Registry 'NoAutorun' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer'
             ValueName = 'NoAutorun'
             ValueType = 'DWord'
             ValueData = '1'
@@ -578,7 +578,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'User Account Control: Admin Approval Mode for the Built-in Administrator account' is set to 'Enabled'
         Registry 'FilterAdministratorToken' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System'
             ValueName = 'FilterAdministratorToken'
             ValueType = 'DWord'
             ValueData = '1'
@@ -589,7 +589,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'User Account Control: Behavior of the elevation prompt for standard users' is set to 'Automatically deny elevation requests'
         Registry 'ConsentPromptBehaviorUser' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System'
             ValueName = 'ConsentPromptBehaviorUser'
             ValueType = 'DWord'
             ValueData = '0'
@@ -611,8 +611,8 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Windows Firewall: Domain: Outbound connections' is set to 'Allow (default)'
         Registry 'OutboundActionDefault' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\DefaultOutboundAction'
-            ValueName = 'OutboundActionDefault'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\DomainProfile'
+            ValueName = 'DefaultOutboundAction'
             ValueType = 'DWord'
             ValueData = '1'
         }
@@ -622,7 +622,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'
         Registry 'EnableFirewallDomain' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\DomainProfile'
             ValueName = 'EnableFirewall'
             ValueType = 'DWord'
             ValueData = '1'
@@ -630,13 +630,13 @@ Configuration AzureSecurity_WindowsServer2019 {
 
         # CceId: AZ-WIN-00145 
         # DataSource: Registry Policy
-        # Ensure 'Turn off multicast name resolution' is set to 'Enabled' 
+        # Ensure 'Turn off multicast name resolution' is set to 'Enabled'
         Registry 'EnableMulticast' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\DNSClient'
             ValueName = 'EnableMulticast'
             ValueType = 'DWord'
-            ValueData = '1'
+            ValueData = '0'
         }
 
         # CceId: CCE-37163-3 
@@ -644,7 +644,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Turn off Internet Connection Wizard if URL connection is referring to Microsoft.com' is set to 'Enabled'
         Registry 'ExitOnMSICW' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Internet Connection Wizard'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Internet Connection Wizard'
             ValueName = 'ExitOnMSICW'
             ValueType = 'DWord'
             ValueData = '1'
@@ -656,7 +656,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # JMF: Modified from 1, looks like typo.
         Registry 'MaxSizeSystemLog' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\System'
             ValueName = 'MaxSize'
             ValueType = 'DWord'
             ValueData = '32768'
@@ -667,7 +667,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Turn off app notifications on the lock screen' is set to 'Enabled' 
         Registry 'DisableLockScreenAppNotifications' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System'
             ValueName = 'DisableLockScreenAppNotifications'
             ValueType = 'DWord'
             ValueData = '1'
@@ -678,50 +678,10 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Turn off Autoplay' is set to 'Enabled: All drives'
         Registry 'NoDriveTypeAutoRun' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer'
             ValueName = 'NoDriveTypeAutoRun'
             ValueType = 'DWord'
             ValueData = '255'
-        }
-
-        # CceId: CCE-36877-9
-        # DataSource: Security Policy
-        # Ensure 'Deny log on as a service' to include 'Guests'
-        UserRightsAssignment Denylogonasaservice {
-            Policy   = 'Deny_log_on_as_a_service'
-            Identity = 'Guests'
-        }
-
-        # CceId: CCE-37146-8
-        # DataSource: Security Policy
-        # Ensure 'Deny log on locally' to include 'Guests'
-        UserRightsAssignment Denylogonlocally {
-            Policy   = 'Deny_log_on_locally'
-            Identity = 'Guests'
-        }
-
-        # CceId: CCE-36867-0 
-        # DataSource: Security Policy
-        # Ensure 'Deny log on through Remote Desktop Services' is set to 'Guests, Local account'
-        UserRightsAssignment DenylogonthroughRemoteDesktopServices {
-            Policy   = 'Deny_log_on_through_Remote_Desktop_Services'
-            Identity = 'Guests, Local account'
-        }
-
-        # CceId: CCE-37659-0
-        # DataSource: Security Policy
-        # Ensure 'Allow log on locally' is set to 'Administrators'
-        UserRightsAssignment Allowlogonlocally {
-            Policy   = 'Allow_log_on_locally'
-            Identity = 'Administrators' 
-        }
-
-        # CceId: CCE-36923-1
-        # DataSource: Security Policy
-        # Ensure 'Deny log on as a batch job' to include 'Guests'
-        UserRightsAssignment Denylogonasabatchjob {
-            Policy   = 'Deny_log_on_as_a_batch_job'
-            Identity = 'Guests'
         }
 
         # CceId: CCE-38040-2
@@ -738,10 +698,10 @@ Configuration AzureSecurity_WindowsServer2019 {
         # CceId: CCE-38041-0 
         # DataSource: Registry Policy
         # Ensure 'Windows Firewall: Domain: Settings: Display a notification' is set to 'No'
-        Registry 'OffNotifications' {
+        Registry 'DisableNotificationsDomain' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\DisableNotifications'
-            ValueName = 'OffNotifications'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\DomainProfile'
+            ValueName = 'DisableNotifications'
             ValueType = 'DWord'
             ValueData = '0'
         }
@@ -751,7 +711,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Windows Firewall: Private: Firewall state' is set to 'On (recommended)'
         Registry 'EnableFirewallPrivate' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PrivateProfile'
             ValueName = 'EnableFirewall'
             ValueType = 'DWord'
             ValueData = '1'
@@ -762,18 +722,10 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Windows Firewall: Private: Outbound connections' is set to 'Allow (default)'
         Registry 'DefaultOutboundAction' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PrivateProfile'
             ValueName = 'DefaultOutboundAction'
             ValueType = 'DWord'
             ValueData = '0'
-        }
-
-        # CceId: CCE-37954-5
-        # DataSource: Security Policy
-        # Ensure 'Deny access to this computer from the network' is set to 'Guests' (DC only)
-        UserRightsAssignment  Denyaccesstothiscomputerfromthenetwork {
-            Policy   = 'Deny_access_to_this_computer_from_the_network'
-            Identity = 'Guests'
         }
 
         # CceId: CCE-36063-6
@@ -790,9 +742,9 @@ Configuration AzureSecurity_WindowsServer2019 {
         # CceId: CCE-37621-0
         # DataSource: Registry Policy
         # Ensure 'Windows Firewall: Private: Settings: Display a notification' is set to 'No''
-        Registry 'DisableNotifications' {
+        Registry 'Private' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PrivateProfile'
             ValueName = 'DisableNotifications'
             ValueType = 'DWord'
             ValueData = '1'
@@ -803,7 +755,7 @@ Configuration AzureSecurity_WindowsServer2019 {
         # Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)'
         Registry 'EnableFirewallPublic' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PublicProfile'
             ValueName = 'EnableFirewall'
             ValueType = 'DWord'
             ValueData = '1'
@@ -811,46 +763,46 @@ Configuration AzureSecurity_WindowsServer2019 {
 
         # CceId: CCE-37434-8 
         # DataSource: Registry Policy
-        # Ensure 'Windows Firewall: Public: Outbound connections' is set to 'Allow (default)
+        # Ensure 'Windows Firewall: Public: Outbound connections' is set to 'Allow (default)'
         Registry 'OutboundAction' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
-            ValueName = 'OutboundAction'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PublicProfile'
+            ValueName = 'DefaultOutboundAction'
             ValueType = 'DWord'
             ValueData = '0'
         }
 
         # CceId: CCE-36268-1
         # DataSource: Registry Policy
-        # Ensure 'Windows Firewall: Public: Settings: Apply local connection security rules' is set to 'No'
+        # Ensure 'Windows Firewall: Public: Settings: Apply local connection security rules' is set to 'Yes'
         Registry 'AllowLocalIPsecPolicyMergePublic' {
-            Ensure       = 'Present'
-            Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
-            ValueName    = 'AllowLocalIPsecPolicyMerge'
-            ValueType    = 'DWord'
-            ValueData    = '0'
+            Ensure    = 'Present'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PublicProfile'
+            ValueName = 'AllowLocalIPsecPolicyMerge'
+            ValueType = 'DWord'
+            ValueData = '1'
         }
         
         # CceId: CCE-38043-6
         # DataSource: Registry Policy
         # Ensure 'Windows Firewall: Public: Settings: Display a notification' is set to 'No'
-        Registry 'turuoffNotifications' {
+        Registry 'DisableNotificationsPublic' {
             Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
-            ValueName = 'turuoffNotifications'
+            Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PublicProfile'
+            ValueName = 'DisableNotifications'
             ValueType = 'DWord'
             ValueData = '1'
         }
 
         # CceId: AZ-WIN-00089
         # DataSource: Registry Policy
-        # Ensure 'Windows Firewall: Private: Allow unicast response' is set to 'No'
+        # Windows Firewall: Private: Allow unicast response
         Registry 'DisableUnicastResponsesToMulticastBroadcastPrivate' {
             Ensure    = 'Present'
             Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PrivateProfile'
             ValueName = 'DisableUnicastResponsesToMulticastBroadcast'
             ValueType = 'DWord'
-            ValueData = '1'
+            ValueData = '0'
         }
 
         # CceId: AZ-WIN-00090
@@ -864,22 +816,6 @@ Configuration AzureSecurity_WindowsServer2019 {
             ValueData = '1'
         }
 
-        # CceId: AZ-WIN-00184
-        # DataSource: Security Policy
-        # Ensure 'Bypass traverse checking' is set to 'Administrators, Authenticated Users, Backup Operators, Local Service, Network Service'
-        UserRightsAssignment Bypasstraversechecking {
-            Policy   = 'Bypass_traverse_checking'
-            Identity = 'Administrators, Authenticated Users, Backup Operators, Local Service, Network Service'
-        }
-
-        # CceId: CCE-35818-4
-        # DataSource: Security Policy
-        # Ensure 'Access  this computer from the network' is set to 'Administrators, Authenticated Users' (DC only)
-        UserRightsAssignment  Accessthiscomputerfromthenetwork {
-            Policy   = 'Access_this_computer_from_the_network'
-            Identity = 'Administrators, Authenticated Users'
-        }
-
         # CceId: AZ-WIN-00088
         # DataSource: Registry Policy
         # Ensure 'Windows Firewall: Domain: Allow unicast response' is set to 'No'
@@ -891,20 +827,103 @@ Configuration AzureSecurity_WindowsServer2019 {
             ValueData = '0'
         }
 
+        # CceId: CCE-36877-9
+        # DataSource: Security Policy
+        # Ensure 'Deny log on as a service' to include 'Guests'
+        UserRightsAssignment SeDenyServiceLogonRight {
+            Policy   = 'Deny_log_on_as_a_service'
+            Identity = 'Guests'
+            Force    = $true
+        }
+
+        # CceId: CCE-37146-8
+        # DataSource: Security Policy
+        # Ensure 'Deny log on locally' to include 'Guests'
+        UserRightsAssignment SeDenyInteractiveLogonRight {
+            Policy   = 'Deny_log_on_locally'
+            Identity = 'Guests'
+            Force    = $true
+        }
+
+        # CceId: CCE-36867-0 
+        # DataSource: Security Policy
+        # Ensure 'Deny log on through Remote Desktop Services' is configured
+        UserRightsAssignment SeDenyRemoteInteractiveLogonRight {
+            Policy   = 'Deny_log_on_through_Remote_Desktop_Services'
+            Identity = 'Guests'
+            Force    = $true     
+        }
+
+        # CceId: CCE-37659-0
+        # DataSource: Security Policy
+        # Ensure 'Allow log on locally' is set to 'Administrators'
+        UserRightsAssignment SeInteractiveLogonRight {
+            Policy   = 'Allow_log_on_locally'
+            Identity = 'Administrators'
+            Force    = $true 
+        }
+
+        # CceId: CCE-36923-1
+        # DataSource: Security Policy
+        # Ensure 'Deny log on as a batch job' to include 'Guests'
+        UserRightsAssignment SeDenyBatchLogonRight {
+            Policy   = 'Deny_log_on_as_a_batch_job'
+            Identity = 'Guests'
+            Force    = $true
+        }
+
+        # CceId: CCE-37954-5
+        # DataSource: Security Policy
+        # Ensure 'Deny access to this computer from the network' is set to 'Guests' (DC only)
+        UserRightsAssignment SeDenyNetworkLogonRight {
+            Policy   = 'Deny_access_to_this_computer_from_the_network'
+            Identity = 'Guests'
+            Force    = $true
+        }
+ 
+        # CceId: AZ-WIN-00184
+        # DataSource: Security Policy
+        # Ensure 'Bypass traverse checking' is set to 'Administrators, Authenticated Users, Backup Operators, Local Service, Network Service'
+        UserRightsAssignment SeChangeNotifyPrivilege {
+            Policy   = 'Bypass_traverse_checking'
+            Identity = 'Administrators','Authenticated Users','Backup Operators','Local Service','Network Service'
+            Force    = $true
+        }
+
+        # CceId: CCE-38326-5
+        # DataSource: Security Policy
+        # Ensure 'Increase scheduling priority' is set to 'Administrators'
+        UserRightsAssignment SeIncreaseBasePriorityPrivilege {
+            Policy   = 'Increase_scheduling_priority'
+            Identity = 'Administrators'
+            Force    = $true
+        }
+
+        # CceId: CCE-35818-4
+        # DataSource: Security Policy
+        # Ensure 'Access  this computer from the network' is set to 'Administrators, Authenticated Users' (DC only)
+        UserRightsAssignment  SeNetworkLogonRight {
+            Policy   = 'Access_this_computer_from_the_network'
+            Identity = 'Administrators','Authenticated Users'
+            Force    = $true
+        }
+
         # CceId: CCE-38328-1
         # DataSource: Security Policy
         # Ensure 'Shut down the system' is set to 'Administrators'
-        UserRightsAssignment Shutdownthesystem {
+        UserRightsAssignment SeShutdownPrivilege {
             Policy   = 'Shut_down_the_system'
             Identity = 'Administrators'
+            Force    = $true
         }
 
         # CceId: AZ-WIN-00185
         # DataSource: Security Policy
         # Ensure 'Increase a process working set' is set to 'Administrators, Local Service'
-        UserRightsAssignment Increaseaprocessworkingset {
+        UserRightsAssignment SeIncreaseWorkingSetPrivilege {
             Policy   = 'Increase_a_process_working_set'
-            Identity = 'Administrators, Local Service'
+            Identity = 'Administrators','Local Service'
+            Force    = $true
         }
 
         
