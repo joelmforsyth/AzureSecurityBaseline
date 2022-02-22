@@ -41,7 +41,6 @@ Configuration AzureSecurity_WindowsServer2019 {
             # DataSource: Security Policy
             #  Ensure 'Enforce password history' is set to '24 or more password(s)'
             Enforce_password_history = '24'
-
         }
 
         # CceId: CCE-37741-6
@@ -614,7 +613,7 @@ Configuration AzureSecurity_WindowsServer2019 {
             Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\DomainProfile'
             ValueName = 'DefaultOutboundAction'
             ValueType = 'DWord'
-            ValueData = '1'
+            ValueData = '0'
         }
 
         # CceId: CCE-36062-8
@@ -653,7 +652,6 @@ Configuration AzureSecurity_WindowsServer2019 {
         # CceId: CCE-36092-5
         # DataSource: Registry Policy
         # Ensure 'System: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
-        # JMF: Modified from 1, looks like typo.
         Registry 'MaxSizeSystemLog' {
             Ensure    = 'Present'
             Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\System'
@@ -703,7 +701,7 @@ Configuration AzureSecurity_WindowsServer2019 {
             Key       = 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\DomainProfile'
             ValueName = 'DisableNotifications'
             ValueType = 'DWord'
-            ValueData = '0'
+            ValueData = '1'
         }
 
         # CceId: CCE-38239-0
@@ -964,7 +962,6 @@ Configuration AzureSecurity_WindowsServer2019 {
             # CceId: AZ-WIN-00120
             # DataSource: Registry Policy
             # Ensure 'Devices: Allow undock without having to log on' is set to 'Disabled'
-            # JMF: Modified from 'Enabled', possible typo
             Devices_Allow_undock_without_having_to_log_on = 'Disabled'
 
             # CceId: CCE-37029-6
