@@ -1,9 +1,10 @@
-# AzureSecurityBaseline
+# Azure Security Baseline
 Security configuration scripts based on Azure Defender Recommendations. Based on @Cloudneeti script found here: https://github.com/Cloudneeti/os-harderning-scripts/blob/master/WindowsServer2019/CIS_Benchmark_WindowsServer2019_v100.ps1
 
 The referenced script contains several errors including wrong or no CCE Ids, wrong properties, and poorly formed configuration. This script also only aims to satisfy the security recommendations provided by Azure Security Center and gives the Azure Id where applicable.
 
 ## Prerequisites
+- Windows Server 2019
 - PowerShell 6+ (though I only tested on PowerShell 7)
 - DSC Modules (installation snippet included below)
 
